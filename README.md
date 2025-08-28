@@ -1,1 +1,1 @@
-O repositório serve como base para centralizar todo o conteúdo relacionado à matéria Banco de Dados, facilitando futuras consultas, colaboração entre alunos e aprimoramento das competências relacionadas a banco de dados
+Este repositório serve como base para centralizar todo o conteúdo relacionado à matéria Banco de Dados. O objetivo é facilitar futuras consultas, colaboração entre alunos e aprimoramento das competências práticas e teóricas em database.
