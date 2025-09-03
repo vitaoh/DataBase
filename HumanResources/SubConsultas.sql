@@ -101,15 +101,59 @@ AND e.department_id = (
 
 -- 11
 -- Crie uma consulta para retornar todos os funcionários que têm o mesmo id de cargo que Rajs e que foram contratados depois de Davies
+SELECT e.*
+FROM employees e
+WHERE e.job_id = (
+    SELECT job_id FROM employees WHERE last_name = 'Rajs'
+)
+AND e.hire_date > (
+    SELECT hire_date FROM employees WHERE last_name = 'Davies'
+);
 
 -- 12 
 -- Retorne o ID de departamento e o salário mínimo de todos os funcionários, agrupados por ID de departamento que têm um salário mínimo superior aos daqueles cujo ID de departamento é diferente de 50
+SELECT department_id, MIN(salary) AS min_salary
+FROM employees
+GROUP BY department_id
+HAVING MIN(salary) > (
+    SELECT MIN(salary)
+    FROM employees
+    WHERE department_id <> 50
+);
 
 -- 13 
 -- Encontre os sobrenomes de todos os funcionários cujos salários são iguais ao salário mínimo de qualquer departamento
+SELECT last_name
+FROM employees e
+WHERE salary IN (
+    SELECT MIN(salary)
+    FROM employees
+    GROUP BY department_id
+);
 
 -- 14
 -- Quais funcionários têm salários inferiores aos dos programadores do departamento de TI
+SELECT employee_id, first_name, last_name, salary
+FROM employees
+WHERE salary < (
+    SELECT MIN(salary)
+    FROM employees
+    WHERE job_id LIKE '%PROG%'
+    AND department_id = (
+        SELECT department_id
+        FROM departments
+        WHERE department_name = 'IT'
+    )
+);
 
 -- 15 
 -- Liste last_name, first_name, department_id e manager_id de todos os funcionários que têm o mesmo department_id e manager_id que o funcionário 141. Exclua o funcionário 141 do conjunto de resultados
+SELECT last_name, first_name, department_id, manager_id
+FROM employees
+WHERE department_id = (
+    SELECT department_id FROM employees WHERE employee_id = 141
+)
+AND manager_id = (
+    SELECT manager_id FROM employees WHERE employee_id = 141
+)
+AND employee_id <> 141;
