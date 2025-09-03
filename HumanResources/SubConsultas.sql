@@ -80,3 +80,36 @@ WHERE EXISTS (
     JOIN departments d ON l.location_id = d.location_id
     WHERE l.country_id = c.country_id
 );
+
+-- 9
+-- Quais são os nomes dos departamentos que estão na cidade Seattle
+SELECT department_name
+FROM departments d
+JOIN locations l ON d.location_id = l.location_id
+WHERE l.city = 'Seattle';
+
+-- 10
+-- Crie uma consulta para retornar todos os funcionários que têm um salário superior ao de Lorentz e que sejam do mesmo departamento que Abel
+SELECT e.first_name, e.last_name, e.salary, e.department_id
+FROM employees e
+WHERE e.salary > (
+    SELECT salary FROM employees WHERE last_name = 'Lorentz'
+)
+AND e.department_id = (
+    SELECT department_id FROM employees WHERE last_name = 'Abel'
+);
+
+-- 11
+-- Crie uma consulta para retornar todos os funcionários que têm o mesmo id de cargo que Rajs e que foram contratados depois de Davies
+
+-- 12 
+-- Retorne o ID de departamento e o salário mínimo de todos os funcionários, agrupados por ID de departamento que têm um salário mínimo superior aos daqueles cujo ID de departamento é diferente de 50
+
+-- 13 
+-- Encontre os sobrenomes de todos os funcionários cujos salários são iguais ao salário mínimo de qualquer departamento
+
+-- 14
+-- Quais funcionários têm salários inferiores aos dos programadores do departamento de TI
+
+-- 15 
+-- Liste last_name, first_name, department_id e manager_id de todos os funcionários que têm o mesmo department_id e manager_id que o funcionário 141. Exclua o funcionário 141 do conjunto de resultados
