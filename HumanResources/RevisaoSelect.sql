@@ -110,10 +110,3 @@ WHERE e.department_id IN (
         )
     )
 );
-
-
-
-
-
-
-
