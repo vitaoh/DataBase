@@ -7,7 +7,9 @@ where j.job_title = 'Sales Representative' OR j.job_title = 'Stock Clerk';
 
 -- 2
 -- Consultar os nomes dos países e os nomes das regiões onde estão localizados
-
+select country_name, r.region_name
+from countries c
+inner join regions r on c.region_id = r.region_id;
 
 -- 3
 -- Consultar o nome do departamento e o sobrenome de seu gerente. Caso o departamento não tenha gerente, liste o nome do departamento e indique null para o gerente
