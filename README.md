@@ -1,1 +1,1 @@
-Este repositório serve como base para centralizar todo o conteúdo relacionado à matéria Banco de Dados. O objetivo é facilitar futuras consultas, colaboração entre alunos e aprimoramento das competências práticas e teóricas em database.
+
