@@ -1,27 +1,27 @@
 -- 1. Criar tabela seq_d_songs copiando d_songs
-create table seq_d_songs as select * from d_songs;
+CREATE TABLE SEQ_D_SONGS AS SELECT * FROM D_SONGS;
 
 -- 2. Criar sequência personalizada para a tabela seq_d_songs
-create sequence seq_d_songs_seq
-    start with 100
-    increment by 2
-    maxvalue 1000
-    nocache 
-    nocycle;
+CREATE SEQUENCE SEQ_D_SONGS_SEQ
+    START WITH 100
+    INCREMENT BY 2
+    MAXVALUE 1000
+    NOCACHE
+    NOCYCLE;
 
 -- 3. Consultar as configurações da sequência
-select * from user_sequences
-where sequence_name = 'seq_d_songs_seq';
+SELECT * FROM USER_SEQUENCES
+WHERE SEQUENCE_NAME = 'SEQ_D_SONGS_SEQ';
 
 -- 4. Inserir duas músicas usando a sequência
-insert into seq_d_songs (id, title, duration, artist, type_code)
-values (seq_d_songs_seq.nextval, 'Island Fever', '5 min', 'Hawaiian Islanders', 12);
+INSERT INTO SEQ_D_SONGS (ID, TITLE, DURATION, ARTIST, TYPE_CODE)
+VALUES (SEQ_D_SONGS_SEQ.NEXTVAL, 'Island Fever', '5 min', 'Hawaiian Islanders', 12);
 
-insert into seq_d_songs (id, title, duration, artist, type_code)
-values (seq_d_songs_seq.nextval, 'Castle of Dreams', '4 min', 'The Wanderers', 77);
+INSERT INTO SEQ_D_SONGS (ID, TITLE, DURATION, ARTIST, TYPE_CODE)
+VALUES (SEQ_D_SONGS_SEQ.NEXTVAL, 'Castle of Dreams', '4 min', 'The Wanderers', 77)
 
 -- 5. Exibir valor atual da sequência
-select seq_d_songs_seq.currval from dual;
+SELECT SEQ_D_SONGS_SEQ.CURRVAL FROM DUAL;
 
 -- 6. Três vantagens de usar sequências
 -- Garantem geração automática de valores únicos.
@@ -40,23 +40,23 @@ select seq_d_songs_seq.currval from dual;
 
 -- Exercício de Extensão
 -- 1. Criar tabela students
-create table students(
-    student_id number(6) primary key,
-    name varchar(50),
-    course varchar(30),
-    registration_date date
+CREATE TABLE STUDENTS(
+    STUDENT_ID NUMBER(6) PRIMARY KEY,
+    NAME VARCHAR(50),
+    COURSE VARCHAR(30),
+    REGISTRATION_DATE DATE
 );
 
 -- 2. Criar sequência student_id_seq
-create sequence student_id_seq
-    start with 1
-    increment by 1
-    nocache
-    nocycle;
+CREATE SEQUENCE STUDENT_ID_SEQ
+    START WITH 1
+    INCREMENT BY 1
+    NOCACHE
+    NOCYCLE;
 
 -- 3. Inserir alunos usando a sequência
-insert into students (student_id, name, course, registration_date)
-values (student_id_seq.nextval, 'Maria Silva', 'Computer Science', sysdate);
+INSERT INTO STUDENTS (STUDENT_ID, NAME, COURSE, REGISTRATION_DATE)
+VALUES (STUDENT_ID_SEQ.NEXTVAL, 'Maria Silva', 'Computer Science', SYSDATE);
 
-insert into students (student_id, name, course, registration_date)
-values (student_id_seq.NEXTVAL, 'João Souza', 'Information Systems', sysdate);
+INSERT INTO STUDENTS (STUDENT_ID, NAME, COURSE, REGISTRATION_DATE)
+VALUES (STUDENT_ID_SEQ.NEXTVAL, 'João Souza', 'Information Systems', SYSDATE);
