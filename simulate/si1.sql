@@ -1,4 +1,23 @@
 -- // 🧾 LISTA DE EXERCÍCIOS – Revisão para Prova de Database \\ --
+
+-- 🔹 0. Criacao do Usuario Simulado
+
+ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE;
+
+CREATE USER simulado IDENTIFIED BY simulado;
+
+ALTER USER simulado QUOTA UNLIMITED ON users;
+
+GRANT CREATE SESSION TO simulado;
+GRANT CREATE TABLE TO simulado;
+GRANT CREATE VIEW TO simulado;
+GRANT CREATE SEQUENCE TO simulado;
+GRANT CREATE SYNONYM TO simulado;
+
+ALTER USER simulado
+DEFAULT TABLESPACE users
+TEMPORARY TABLESPACE temp;
+
 -- 🔹 1. Índices e Sinônimos
 
 -- Crie uma tabela chamada PRODUTOS com as colunas ID, NOME, PRECO e ESTOQUE.
