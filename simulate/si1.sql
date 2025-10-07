@@ -88,10 +88,11 @@ INNER JOIN clientes cl ON cl.cidade_id = cd.id;
 -- Transfira R$100 da conta 1 para a conta 2 usando UPDATE.
 
 -- Use ROLLBACK e verifique se as alterações foram desfeitas.
-
 -- Repita a operação e finalize com COMMIT.
 
 -- Explique a diferença entre COMMIT e ROLLBACK.
+-- Rollback esta inserido para cancelar mudancas feitas e cancelando o passo de alteracao para o resultado final.
+-- Commit e um comando para salvar as mudancas feitas em uma banco.
 
 -- O que é o conceito de ACID e por que é importante?
 -- Atomicidade, Consistência, Isolamento e Durabilidade.
