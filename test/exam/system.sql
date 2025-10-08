@@ -1,0 +1,33 @@
+-- Prova DB : Tiago Setti Mendes e Victor Rodrigues Herculini
+
+ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE;
+
+CREATE USER supermercado IDENTIFIED BY supermercado;
+
+drop user supermercado;
+
+ALTER USER supermercado QUOTA UNLIMITED ON users;
+
+GRANT CREATE SESSION TO supermercado;
+GRANT CREATE TABLE TO supermercado;
+GRANT CREATE VIEW TO supermercado;
+GRANT CREATE SEQUENCE TO supermercado;
+GRANT CREATE SYNONYM TO supermercado;
+GRANT CREATE ROLE TO supermercado;
+GRANT CREATE USER TO supermercado;
+
+ALTER USER supermercado
+DEFAULT TABLESPACE users
+TEMPORARY TABLESPACE temp;
+
+
+CREATE USER hr_diarias
+IDENTIFIED BY senha123
+DEFAULT TABLESPACE users
+TEMPORARY TABLESPACE temp
+QUOTA 5M ON users;
+
+GRANT CONNECT, CREATE SESSION, CREATE VIEW, CREATE TABLE, CREATE SEQUENCE, CREATE VIEW TO hr_diarias;
+
+GRANT SELECT, REFERENCES ON hr.employees TO hr_diarias;
+GRANT SELECT, REFERENCES ON hr.departments TO hr_diarias; 
